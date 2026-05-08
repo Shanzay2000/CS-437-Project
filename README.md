@@ -83,9 +83,9 @@ Semi-supervised object detection using the Soft Teacher framework, exploiting bo
 - Labeled images pass through strong augmentation to the student for standard supervised loss.
 
 **Objective:**
-```
+
 $$L = L_{sup} + \lambda L_{unsup}$$
-```
+
 
 **Training schedule:**
 - Round 1: 25 epochs, LR=5e-5, from ImageNet pretrained weights
