@@ -3,9 +3,7 @@ Semi-Supervised Object Detection for Rock Art Images with Domain Shift
 
 ## 1. Project Overview
 
-This project focuses on automated detection of petroglyphs, also known as rock art engravings, in field images from Pakistan. The main challenge is domain shift: many available labeled petroglyph datasets contain clean, cropped, high-contrast images, while the target images contain full rock surfaces, natural lighting variation, low contrast engravings, shadows, weathering, and complex stone backgrounds.
-
-The goal of this project is to improve object detection performance on Pakistani field petroglyph images, especially the Gichioda target domain, by comparing baseline detectors with semi-supervised learning, domain transfer, and architecture/augmentation-based improvements.
+This project focuses on automated detection of petroglyphs (rock art engravings) in field images from Pakistan. The main challenge is domain shift as many available labeled petroglyph datasets contain clean, cropped, high-contrast images, while the target images contain full rock surfaces, natural lighting variation, low contrast engravings, shadows, weathering, and complex stone backgrounds. The goal of this project is to improve object detection performance on Pakistani field petroglyph images, especially the Gichioda target domain, by comparing baseline detectors with semi-supervised learning, domain transfer, and architecture/augmentation-based improvements.
 
 ---
 
