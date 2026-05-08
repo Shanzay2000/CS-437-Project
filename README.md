@@ -47,9 +47,7 @@ This project explores methods for reducing this domain gap.
 ├── Second Improvement - Cycle GAN.ipynb
 ├── Second Improvement - Squeeze & Excitation.ipynb
 └── README.md
-
----
-
+```
 ---
 
 ## Notebooks
@@ -86,7 +84,7 @@ Semi-supervised object detection using the Soft Teacher framework, exploiting bo
 
 **Objective:**
 ```
-L = L_supervised + L_unsupervised
+$$L = L_{sup} + \lambda L_{unsup}$$
 ```
 
 **Training schedule:**
