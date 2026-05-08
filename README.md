@@ -61,7 +61,7 @@ Three supervised baselines trained exclusively on the Roboflow labeled dataset w
   - Stage 2: full network end-to-end, 3000 iterations, cosine LR with warmup
   - Prototype Calibration Block (PCB) at inference: rescales detection scores by cosine similarity between each image's backbone feature and a mean feature vector of cropped petroglyph support images, suppressing false positives on non-petroglyph rock surfaces
 
-**Evaluation:** All models evaluated on the KhomarDas Annotated test set using mAP@50, mAP@50-95, Precision, Recall, and F1.
+**Evaluation:** All models evaluated on the KhomarDas Annotated test set using mAP@50, Precision and Recall.
 
 ---
 
@@ -108,7 +108,7 @@ Unpaired image-to-image domain transfer to reduce the visual gap between Roboflo
 ### 4. `Second Improvement - Squeeze & Excitation.ipynb`
 Two complementary modifications to the Soft Teacher detection backbone targeting the specific visual challenges of petroglyph imagery.
 
-**Modification 1 — Rock-Art Specific Augmentation:**
+**Modification 1: Rock-Art Specific Augmentation:**
 
 Added on top of the standard augmentation pipeline, five stochastic degradations simulate real field photography conditions:
 
@@ -120,7 +120,7 @@ Added on top of the standard augmentation pipeline, five stochastic degradations
 | Gaussian noise (σ = 3–12) | Sensor noise in shadowed or low-light regions |
 | Per-channel brightness shift (±18) | Outdoor white-balance colour casts between capture sessions |
 
-**Modification 2 — Squeeze-and-Excitation (SE) Blocks:**
+**Modification 2: Squeeze-and-Excitation (SE) Blocks:**
 
 SE blocks (Hu et al., CVPR 2018) are inserted at each residual stage of the ResNet-50 backbone. Each block:
 1. Globally average-pools the feature map to a channel descriptor vector
@@ -134,13 +134,13 @@ For petroglyphs, engravings and stone background activate very different feature
 ## Results
 
 | Model | mAP@50 | Precision | Recall |
-|---|---|---|---|
-| YOLOv8n | 0.5743 | 0.6963 | 0.5374 |
-| YOLOv11n | 0.5529 | 0.6932 | 0.4725 |
-| DeFRCN | — | — | — |
-| Soft Teacher | — | — | — |
-| + CycleGAN | — | — | — |
-| + SE Blocks | — | — | — |
+|---|---:|---:|---:|
+| YOLOv8n (Baseline) | 0.1279 | 0.4000 | 0.1030 |
+| YOLOv11n (Baseline) | 0.1275 | 0.3908 | 0.1030 |
+| Base Soft Teacher | 0.3845 | 0.5634 | 0.3636 |
+| Soft Teacher + CycleGAN | 0.4155 | 0.6806 | 0.3939 |
+| Soft Teacher + SE-Block | 0.4700 | 0.5795 | 0.5303 |
 
+The results show that the baseline YOLO models struggled on the field-image petroglyph domain, with both YOLOv8n and YOLOv11n achieving only about 0.128 mAP@50 and low recall. The Base Soft Teacher model improved substantially to 0.3845 mAP@50 by using unlabeled KhomarDas and Gichioda images through pseudo-labeling, showing the value of semi-supervised learning for this task. Adding CycleGAN further increased mAP@50 to 0.4155 and produced the highest precision, suggesting better reduction of false positives through domain transfer. The best overall result came from Soft Teacher + SE-Block, which reached 0.4700 mAP@50 and the highest recall of 0.5303, indicating that SE-based feature recalibration helped the model detect more petroglyphs in challenging rock-surface images.
 
 ---
