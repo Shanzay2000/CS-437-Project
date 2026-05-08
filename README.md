@@ -20,7 +20,7 @@ The project uses four data sources:
 | KhomarDas Unannotated | 174 images | No labels | Additional Pakistani field images used for semi-supervised learning |
 | GichioDas | 123 images | No labels | Raw Pakistani field images used as the main target/test domain |
 
-The Roboflow dataset provides a strong source-domain baseline, while KhomarDas and Gichioda represent the more difficult local Pakistani field-image domain.
+The Roboflow dataset provides a strong source-domain baseline, while KhomarDas and GichioDas represent the more difficult local Pakistani field-image domain.
 
 ---
 
@@ -53,7 +53,7 @@ This project explores methods for reducing this domain gap.
 ## Notebooks
 
 ### 1. `Baseline Models.ipynb`
-Three supervised baselines trained exclusively on the Roboflow labeled dataset with no exposure to KhomarDas or Gichioda images during training.
+Three supervised baselines trained exclusively on the Roboflow labeled dataset with no exposure to KhomarDas or GichioDas images during training.
 
 **Models:**
 - **YOLOv8n** — trained for 20 epochs, no augmentation, standard YOLO pipeline
@@ -74,7 +74,7 @@ Semi-supervised object detection using the Soft Teacher framework, exploiting bo
 
 **Data split:**
 - Labeled: Roboflow + KhomarDas Annotated → supervised loss on ground-truth boxes
-- Unlabeled: KhomarDas Unannotated + Gichioda → unsupervised loss on teacher pseudo-labels
+- Unlabeled: KhomarDas Unannotated + GichioDas → unsupervised loss on teacher pseudo-labels
 
 **How it works:**
 - The **teacher** is an identical copy of the student whose weights are never directly trained. Instead they track the student via Exponential Moving Average (EMA, decay=0.9996), making the teacher more stable and reliable than the student at any given step.
@@ -103,8 +103,6 @@ Unpaired image-to-image domain transfer to reduce the visual gap between Roboflo
 - No paired correspondence is required — the network learns the style difference between the two domains unsupervised.
 - The trained generator translates all Roboflow labeled images into KhomarDas visual style (texture, lighting, weathering), while the petroglyph layout and ground-truth bounding boxes remain unchanged.
 - Translated images are appended to the labeled training set, doubling annotated diversity at zero annotation cost.
-
-**Why KhomarDas as the style target?** The 202 KhomarDas annotated images are the closest labeled data to the Gichioda test domain — same country, same field conditions, same rock surface types. Translating Roboflow images into this style directly bridges the gap to what the detector sees at test time.
 
 ---
 
