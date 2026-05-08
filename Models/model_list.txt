@@ -1,7 +1,0 @@
-Pre-Trained Baselines:
-- YOLOv8
-- YOLOv11
-- DFRCNN
-
-Trained for Improvements:
-- Rock Art CycleGan (Roboflow ↔ Khomar Das)
