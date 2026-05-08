@@ -41,7 +41,7 @@ This project explores methods for reducing this domain gap.
 ## 4. Repository Structure
 
 ```text
-.
+
 ├── Baseline Models.ipynb
 ├── First Improvement - Soft Teacher.ipynb
 ├── Second Improvement - Cycle GAN.ipynb
@@ -71,6 +71,7 @@ Three supervised baselines trained exclusively on the Roboflow labeled dataset w
 Semi-supervised object detection using the Soft Teacher framework, exploiting both labeled and unlabeled images.
 
 **Architecture:** ResNet-50 + FPN (P2–P5) + RPN + RoI Head, implemented from scratch in PyTorch.
+![Architecture picture](https://github.com/Shanzay2000/CS-437-Project/blob/main/architecture.jpeg)
 
 **Data split:**
 - Labeled: Roboflow + KhomarDas Annotated → supervised loss on ground-truth boxes
