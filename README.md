@@ -92,6 +92,8 @@ $$L = L_{sup} + \lambda L_{unsup}$$
 
 The two-round strategy exists because pseudo-label quality is poor when the teacher is cold. Starting Round 2 from a strong checkpoint means every pseudo-label is already reliable, making the second round a high-quality refinement pass.
 
+*The first improvement here is the exact same pipeline as the one submitted on LMS. The only change we added was the train-eval split in the Khomar Das annotated set + exclusion from test set for better generizability on unseen images.*
+
 ---
 
 ### 3. `Second Improvement - CycleGAN.ipynb`
